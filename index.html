@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fff4f7">
+  <title>今日能量小卡片</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-top">
+        <p class="eyebrow">Daily Card</p>
+        <div class="date-chip">
+          <span id="date-label">2026.05.23</span>
+          <span id="weekday-label">星期六</span>
+        </div>
+      </div>
+
+      <h1 id="hero-title">今天也要被温柔照顾</h1>
+      <p id="hero-subtitle" class="hero-subtitle">天气、运势、纪念日和一点偏爱，都放在这里了。</p>
+
+      <div class="hero-stats" aria-label="今日概览">
+        <div class="stat-tile">
+          <span>在一起</span>
+          <strong><b id="hero-days">--</b> 天</strong>
+        </div>
+        <div class="stat-tile">
+          <span>今日主题</span>
+          <strong id="theme-name">草莓气泡</strong>
+        </div>
+        <div class="stat-tile">
+          <span>下个节日</span>
+          <strong id="hero-festival">情人节</strong>
+        </div>
+        <div class="stat-tile">
+          <span>今日 BGM</span>
+          <strong id="hero-music">晨光钢琴盒</strong>
+        </div>
+      </div>
+      <div id="theme-sticker" class="theme-sticker" aria-hidden="true"></div>
+    </section>
+
+    <section class="music-panel">
+      <button id="music-toggle" type="button" aria-pressed="false" title="播放或暂停今日 BGM">
+        <span class="music-icon">♪</span>
+        <span id="music-text">开启今日 BGM</span>
+      </button>
+      <div class="music-copy">
+        <strong id="music-title">晨光钢琴盒</strong>
+        <span id="music-subtitle">明亮、轻快、像早晨的窗边</span>
+      </div>
+      <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+
+    <section class="top-grid">
+      <article class="card weather-card">
+        <p class="label">Weather</p>
+        <div class="split">
+          <div>
+            <p id="weather-city" class="muted">韶关</p>
+            <h2 id="weather-summary">今天的天气正在准备中</h2>
+          </div>
+          <b id="temperature">--</b>
+        </div>
+        <p id="outfit" class="tip">出门前看一眼实时天气，穿舒服一点。</p>
+      </article>
+
+      <article class="card relationship-card">
+        <p class="label">Together</p>
+        <div class="days-line">
+          <span id="days-together">--</span>
+          <small>天</small>
+        </div>
+        <p id="relationship-line" class="muted">在一起的天数正在计算中。</p>
+        <div class="anniversary-box">
+          <span>纪念日倒计时</span>
+          <strong id="anniversary-days">--</strong>
+          <p id="anniversary-line">纪念日提醒正在准备中。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <p class="label">Countdown</p>
+        <h2>重要日子与节日</h2>
+      </div>
+      <div id="festival-list" class="festival-list"></div>
+      <div id="birthday-list" class="birthday-list"></div>
+      <div id="event-list" class="events"></div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <p class="label">Horoscope</p>
+        <h2>今天的双人星座运势</h2>
+      </div>
+      <div id="fortune-list" class="fortune-list"></div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-head">
+        <p class="label">Today Plan</p>
+        <h2 id="capsule-title">今天的小安排</h2>
+      </div>
+      <div id="capsule-list" class="capsule-list"></div>
+    </section>
+
+    <section class="guide-grid">
+      <article class="card list-card">
+        <p class="label">Good To Do</p>
+        <h2>今天适合</h2>
+        <ul id="suitable-list"></ul>
+      </article>
+      <article class="card list-card">
+        <p class="label">Not Today</p>
+        <h2>今天不适合</h2>
+        <ul id="avoid-list"></ul>
+      </article>
+    </section>
+
+    <section class="care-strip">
+      <div>
+        <p class="label">Care</p>
+        <h2>今日照顾重点</h2>
+      </div>
+      <div id="care-list" class="care-list"></div>
+    </section>
+
+    <section class="message-paper">
+      <span class="paper-tape" aria-hidden="true"></span>
+      <p class="label" id="message-title">男朋友的小提醒</p>
+      <blockquote id="boyfriend-text">今天想让你先把自己照顾好。</blockquote>
+      <ul id="wish-list" class="wish-list"></ul>
+    </section>
+
+    <section class="quote-card">
+      <p class="label">Little Sentence</p>
+      <p id="quote">把普通的今天，也过成值得记住的一天。</p>
+    </section>
+
+    <footer>
+      <span id="generated-at">今日卡片正在准备中</span>
+      <span id="footer-text">不用立刻回复，打开看看就好。</span>
+    </footer>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

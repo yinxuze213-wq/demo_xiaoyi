@@ -1,0 +1,50 @@
+{
+  "site": {
+    "title": "今日能量小卡片",
+    "hero_title": "今天也要被温柔照顾",
+    "hero_subtitle": "一张会每天换样子的小卡片，放着天气、运势、纪念日和想对你说的话。",
+    "footer": "不用立刻回复，打开看看就好。"
+  },
+  "people": {
+    "girlfriend": {
+      "label": "她",
+      "nickname": "小仪",
+      "birthday": "2001-10-22",
+      "sign": "天秤座"
+    },
+    "boyfriend": {
+      "label": "我",
+      "nickname": "小尹",
+      "birthday": "2000-02-13",
+      "sign": "水瓶座"
+    }
+  },
+  "profile": {
+    "relationship_start": "2026-05-21"
+  },
+  "weather": {
+    "city": "韶关",
+    "latitude": 24.8104,
+    "longitude": 113.5975
+  },
+  "event_remind_days": 30,
+  "events": [
+    {
+      "name": "在一起纪念日",
+      "date": "2026-05-21",
+      "type": "anniversary",
+      "recurring": true,
+      "remind_days": 30
+    }
+  ],
+  "custom_festivals": [],
+  "music": {
+    "mode": "generated",
+    "tracks": []
+  },
+  "quote": {
+    "enabled": true,
+    "categories": ["d", "i", "k"],
+    "max_length": 34
+  }
+}

@@ -1,0 +1,63 @@
+name: Daily Card
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 21:10 Asia/Shanghai. GitHub Actions cron uses UTC.
+    - cron: "10 13 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve site URL
+        env:
+          PAGES_URL: ${{ secrets.PAGES_URL }}
+        run: |
+          if [ -n "$PAGES_URL" ]; then
+            echo "SITE_URL=$PAGES_URL" >> "$GITHUB_ENV"
+          else
+            REPO_NAME="${GITHUB_REPOSITORY#*/}"
+            echo "SITE_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io/${REPO_NAME}/" >> "$GITHUB_ENV"
+          fi
+
+      - name: Generate data
+        run: python scripts/generate_daily.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Send PushPlus message
+        env:
+          PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          PUSHPLUS_TO: ${{ secrets.PUSHPLUS_TO }}
+        run: python scripts/generate_daily.py --push-only --url "$SITE_URL"
